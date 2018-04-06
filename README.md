@@ -12,7 +12,7 @@ Behavior | Input | Output
 ------------ | ------------- | -------------
 Create a new pizza for order | Start pizza | newPizza = {size: "", toppings: [], price: 0}
 Change size of a pizza | <input type="radio" name="size" value="small" checked> Small | newPizza.size = "small",<br>
-Add toppings to a pizza| <input type="radio" name="topping" value="anchovy" checked> Anchovy<br><input type="radio" name="topping" value="cheese" checked> Cheese | newPizza.toppings = [1: Topping {name: "anchovy", price: 2}, 2: Topping {name: "cheese", price: 0 ]
+Add topping to a pizza| <input type="radio" name="topping" value="anchovy"> Anchovy<br><input type="radio" name="topping" value="cheese" checked> Cheese | newPizza.toppings = [1: Topping {name: "cheese", price: 0 ]
 Determine the price of a pizza | Finish Order | newPizza.price = 12
 
 
