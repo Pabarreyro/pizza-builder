@@ -15,4 +15,12 @@ function Order(){
   this.subTotal = 0;
 }
 
+Pizza.prototype.addTopping = function(topping) {
+  this.toppings.push(topping);
+}
+
+Order.prototype.addPizza = function(pizza) {
+  this.pizzas.push(pizza);
+}
+
 //Frontend
