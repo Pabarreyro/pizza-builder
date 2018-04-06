@@ -22,5 +22,15 @@ Pizza.prototype.addTopping = function(topping) {
 Order.prototype.addPizza = function(pizza) {
   this.pizzas.push(pizza);
 }
+Pizza.prototype.pricePizza = function () {
+  this.price = this.toppings.reduce(function(base, topping) {
+    return base + topping.price;}, this.size * 5);
+  }
+
+Order.prototype.priceOrder = function () {
+  this.subTotal = this.pizzas.reduce(function(base, pizza) {
+    return base + pizza.price;
+  }, 0);
+}
 
 //Frontend
