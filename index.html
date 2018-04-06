@@ -10,78 +10,66 @@
 
     <!-- jQuery CDN & custom JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" type="text/javascript"></script>
     <script src="js/scripts.js" type="text/javascript"></script>
   </head>
   <body>
     <main role="main" class="container">
       <!-- Page content -->
       <h1>A Pizza Pablo</h1>
-      <h3><em>Y'all want summa this!</em></h3>
-      <div class="row" id="start_order">
-        <button type="button" class="btn btn-primary">Start Order</button>
+      <h3><em>Y'all want summa this?</em></h3>
+      <div class="row" id="start_order_box">
+        <button type="button" class="btn btn-primary" id="start_order">Build a Pizza</button>
       </div>
       <div class="row">
-        <div class="col-md-8" id="pizza_builder">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Build Pizza
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <button class="dropdown-item" type="button">Small</button>
-                <button class="dropdown-item" type="button">Medium</button>
-                <button class="dropdown-item" type="button">Large</button>
-              </div>
-            </div>
-
-          <form id="toppings_form">
+        <div class="col-md-8 hide" id="pizza_builder">
+          <form id="pizza_form">
             <div class="form-group">
+              <label for="size">What size pizza would you like?</label>
+              <select class="form-control" id="size">
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+              </select>
               <label for="cheese">Would you like cheese?</label>
               <div class="radio">
                 <label>
-                  <input type="radio" name="cheese" value="cheese" checked>
+                  <input type="radio" name="cheese" value="0" checked>
                   Yes
                 </label>
               </div>
               <div class="radio">
                 <label>
-                  <input type="radio" name="cheese" value="no-cheese">
+                  <input type="radio" name="cheese" value="">
                   No
                 </label>
               </div>
             </div>
             <div class="form-group">
-              <label for="meat">What meats would you like?</label>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="topping" value="pepperoni">
-                  Pepperoni
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="topping" value="anchovy">
-                  Anchovy
-                </label>
-              </div>
+              <label for="meat">What meats would you like?</label><br>
+              <input type="checkbox" name="toppings" value="0" id="pepperoni"> Pepperoni<br>
+              <input type="checkbox" name="toppings" value="2" id="anchovy"> Anchovy<br>
             </div>
             <div class="form-group">
-              <label for="meat">Any veggies with that?</label>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="topping" value="mushrooms">
-                  Mushrooms
-                </label>
-                <label>
-                  <input type="radio" name="topping" value="pineapple">
-                  Pineapple
-                </label>
-              </div>
+              <label for="meat">Any veggies with that?</label><br>
+              <input type="checkbox" name="toppings" value="1" id="mushrooms"> Mushrooms<br>
+              <input type="checkbox" name="toppings" value="1" id="pineapple"> Pineapple<br>
             </div>
             <button type="submit" class="btn btn-warning">Add to Order</button>
           </form>
         </div>
-        <div class="col-md-3" id="">
-
+        <div class="col-md-3 hide" id="order_summary">
+          <h5>Thanks for your order!</h5>
+          <h6>Here's what you got:</h6>
+          <ul>
+            <li id="size_output"></li>
+            <li id="cheese_output"></li>
+            <li>Toppings:
+              <ul id="toppings_output">
+              </ul>
+            </li>
+          </ul>
+          <h5>Total: $<span id="subtotal_output"></span></h5>
         </div>
       </div>
     </main>

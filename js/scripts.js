@@ -33,29 +33,50 @@ Order.prototype.priceOrder = function () {
   }, 0);
 }
 
-// Test
-let Anchovy = new Topping("Anchovy", 2);
-let Cheese = new Topping("Cheese", 0);
-let Pepperoni = new Topping("Pepperoni", 1);
-let Mushrooms = new Topping("Mushrooms", 1);
-let Pineapple = new Topping("Pineapple", 1);
-
-let newOrder = new Order();
-console.log(newOrder);
-
-let newPizza = new Pizza(2);
-console.log(newPizza);
-newPizza.addTopping(Cheese);
-newPizza.pricePizza();
-console.log(newPizza);
-newPizza.addTopping(Anchovy);
-newPizza.pricePizza();
-console.log(newPizza);
-newPizza.addTopping(Mushrooms);
-newPizza.pricePizza();
-console.log(newPizza);
-newOrder.addPizza(newPizza);
-newOrder.priceOrder();
-console.log(newOrder);
 
 //Frontend
+
+$(function() {
+  $("#start_order").click(function(){
+    $("#show_order_box").toggleClass("hide");
+    $("#pizza_builder").toggleClass("hide");
+
+    let newOrder = new Order();
+
+    $("#pizza_form").submit(function(event){
+      event.preventDefault();
+
+      $("#order_summary").toggleClass("hide");
+      $("#size_output").text($("#size").val());
+
+      let size = 0;
+
+      if ($("#size").val() === "Small") {
+        size += 2;
+      } else if ($("#size").val() === "Medium") {
+        size += 3;
+      } else {
+        size += 4;
+      }
+
+      let newPizza = new Pizza(size);
+
+      if ($("input:radio[name=cheese]:checked").val()) {
+        let cheese = new Topping("Cheese", "0");
+        $("#cheese_output").text("w Cheese");
+      } else {
+        $("#cheese_output").text("w/o Cheese");
+      }
+
+      $("input:checkbox[name=toppings]:checked").each(function(){
+        $("#toppings_output").append("<li>" + this.id + "</li>")
+        let newTopping = new Topping (this.id, parseInt($(this).val()));
+        newPizza.addTopping(newTopping);
+      });
+
+      newPizza.pricePizza();
+
+      $("#subtotal_output").text(newPizza.price);
+    });
+  });
+});
