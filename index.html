@@ -15,6 +15,75 @@
   <body>
     <main role="main" class="container">
       <!-- Page content -->
+      <h1>A Pizza Pablo</h1>
+      <h3><em>Y'all want summa this!</em></h3>
+      <div class="row" id="start_order">
+        <button type="button" class="btn btn-primary">Start Order</button>
+      </div>
+      <div class="row">
+        <div class="col-md-8" id="pizza_builder">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Build Pizza
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Small</button>
+                <button class="dropdown-item" type="button">Medium</button>
+                <button class="dropdown-item" type="button">Large</button>
+              </div>
+            </div>
+
+          <form id="toppings_form">
+            <div class="form-group">
+              <label for="cheese">Would you like cheese?</label>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="cheese" value="cheese" checked>
+                  Yes
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="cheese" value="no-cheese">
+                  No
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="meat">What meats would you like?</label>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="topping" value="pepperoni">
+                  Pepperoni
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="topping" value="anchovy">
+                  Anchovy
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="meat">Any veggies with that?</label>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="topping" value="mushrooms">
+                  Mushrooms
+                </label>
+                <label>
+                  <input type="radio" name="topping" value="pineapple">
+                  Pineapple
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-warning">Add to Order</button>
+          </form>
+        </div>
+        <div class="col-md-3" id="">
+
+        </div>
+      </div>
     </main>
 
     <footer class="footer">
