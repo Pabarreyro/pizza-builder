@@ -1,4 +1,4 @@
-//Backend
+// Backend
 function Pizza(size){
   this.size = size;
   this.toppings = [];
@@ -22,10 +22,12 @@ Pizza.prototype.addTopping = function(topping) {
 Order.prototype.addPizza = function(pizza) {
   this.pizzas.push(pizza);
 }
+
 Pizza.prototype.pricePizza = function () {
   this.price = this.toppings.reduce(function(base, topping) {
-    return base + topping.price;}, this.size * 5);
-  }
+    return base + topping.price;
+  }, this.size * 5);
+}
 
 Order.prototype.priceOrder = function () {
   this.subTotal = this.pizzas.reduce(function(base, pizza) {
@@ -33,12 +35,23 @@ Order.prototype.priceOrder = function () {
   }, 0);
 }
 
+function setSize(sizeName) {
+  let size = 0;
 
-//Frontend
+  if (sizeName === "Small") {
+    size += 2;
+  } else if (sizeName === "Medium") {
+    size += 3;
+  } else {
+    size += 4;
+  }
+  return size;
+}
 
+// Frontend
 $(function() {
   $("#start_order").click(function(){
-    $("#show_order_box").toggleClass("hide");
+    $("#start_order_box").toggleClass("hide");
     $("#pizza_builder").toggleClass("hide");
 
     let newOrder = new Order();
@@ -49,20 +62,12 @@ $(function() {
       $("#order_summary").toggleClass("hide");
       $("#size_output").text($("#size").val());
 
-      let size = 0;
+      let newPizza = new Pizza(setSize($("#size").val()));
 
-      if ($("#size").val() === "Small") {
-        size += 2;
-      } else if ($("#size").val() === "Medium") {
-        size += 3;
-      } else {
-        size += 4;
-      }
-
-      let newPizza = new Pizza(size);
-
-      if ($("input:radio[name=cheese]:checked").val()) {
-        let cheese = new Topping("Cheese", "0");
+      let cheeseInput = $("input:radio[name=cheese]:checked").val();
+      if (cheeseInput) {
+        let cheese = new Topping("Cheese", 0);
+        newPizza.addTopping(cheese)
         $("#cheese_output").text("w Cheese");
       } else {
         $("#cheese_output").text("w/o Cheese");

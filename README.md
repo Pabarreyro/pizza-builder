@@ -10,10 +10,14 @@ A website for a fictional pizza company where a user can choose one or more indi
 
 Behavior | Input | Output
 ------------ | ------------- | -------------
-Create a new pizza for order | Start pizza | newPizza = {size: "", toppings: [], price: 0}
-Change size of a pizza | <input type="radio" name="size" value="small" checked> Small | newPizza.size = "small",<br>
-Add topping to a pizza| <input type="radio" name="topping" value="anchovy"> Anchovy<br><input type="radio" name="topping" value="cheese" checked> Cheese | newPizza.toppings = [1: Topping {name: "cheese", price: 0 ]
-Determine the price of a pizza | Finish Order | newPizza.price = 12
+Calculates base price of small pizza with no toppings | "small" | $10
+Calculates base price of medium pizza with no toppings  | "medium" | $15
+Calculates base price of large pizza with no toppings  | "large" | $20
+Calculates price of pizza with one meat topping  | "large, anchovy" | $22
+Calculates price of pizza with one veggie topping  | "large, mushroom" | $21
+Calculates price of pizza with multiple toppings  | "large, anchovy, mushroom" | $23
+Calculates price of pizza with all toppings  | "large, pepperoni, anchovy, mushroom, pineapple" | $26
+
 
 
 
